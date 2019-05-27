@@ -1,0 +1,179 @@
+body {
+  background-image: url('images/Avenger\ vs\ Justice\ League2-01.jpg');
+  background-size: contain;
+  background-position: center;  
+ 
+}
+
+.flex-container {
+ /* display: flex;
+ flex-direction: row; */
+ background-color: transparent;
+ height: 820px;
+ width: 700px;
+ margin-top:40px; 
+ margin-bottom: 40px;
+ margin-left: 500px; 
+ box-shadow: 20px 20px;
+}
+
+
+
+.cover{
+ background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Symbol_from_Marvel%27s_The_Avengers_logo.svg/877px-Symbol_from_Marvel%27s_The_Avengers_logo.svg.png);
+ width: 700px;
+ height: 820px;
+ transform: rotateY(0deg);
+ background-color: blue;
+ transform-style: preserve-3d;
+ transform-origin: left;
+ transition: all .5s ease-in;
+}
+
+.flex-container:hover .cover{
+ transform: rotateY(-180deg);
+}
+
+.page1{
+ width: 700px;
+ height: 820px;
+ margin-top: 39px;
+ padding: 2em;
+ color: white;
+ background-color: white;
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ z-index: -1;
+}
+
+.flex-container {
+ /* display: flex;
+ flex-direction: row; */
+ background-color: transparent;
+ height: 820px;
+ width: 700px;
+ margin-top:40px; 
+ margin-bottom: 40px;
+ margin-left: 500px; 
+ box-shadow: 20px 20px;
+}
+
+
+
+.cover{
+ background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Symbol_from_Marvel%27s_The_Avengers_logo.svg/877px-Symbol_from_Marvel%27s_The_Avengers_logo.svg.png);
+ width: 700px;
+ height: 820px;
+ transform: rotateY(0deg);
+ background-color: blue;
+ transform-style: preserve-3d;
+ transform-origin: left;
+ transition: all .5s ease-in;
+}
+
+.flex-container:hover .cover{
+ transform: rotateY(-180deg);
+}
+
+#box1{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+position: static;
+
+}
+
+
+#box2{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+}
+
+#box3{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+}
+
+#box4{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+margin-top: 10px;
+}
+
+#box5{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+}
+
+#box6{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+}
+
+#box7{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+margin-top: 10px;
+}
+
+#box8{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+margin-top: 10px;
+}
+
+#box9{
+background-color: white;
+color: black;
+height: 200px;
+width: 200px;
+border-style: solid;
+border-width: 5px;
+border-color: black;
+margin-top: 10px;
+}
+
+.box{
+display: inline-block;
+
+}
