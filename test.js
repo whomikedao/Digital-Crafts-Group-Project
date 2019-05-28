@@ -12,7 +12,7 @@ $(function(){
         let $heroInput = $('#hero-input').val();
         let $clear = $('#hero-input').val('');
         $.get(superheroUrl).done((result)=>{
-            for(let i = 0; i <= result.length; i++){ //LOOP FOR MATCHING NAME AND IF "GOOD"
+            for(let i = 0; i < result.length; i++){ //LOOP FOR MATCHING NAME AND IF "GOOD"
                 if(result[i].name.toLowerCase() === $heroInput.toLowerCase() && result[i].biography.alignment === 'good'){
                     $information(result[i]);
                 } else {
@@ -46,11 +46,12 @@ $(function(){
     let $grabMovies = function(hero){
         let $displayImg = $('#images');
         $.get(movieUrl + hero + movieUrlSearch).done((result)=>{
-            for(let i = 0; i <= result.results.length; i++){
+            for(let i = 0; i < result.results.length; i++){
                 // http://image.tmdb.org/t/p/w200//j3SFJqZPeeB9g5JMU7UFLgEqj2T.jpg
                 let $image = result.results[i].poster_path;
+                let $movieID = result.results[i].id;
                 $displayImg.append(`<img src="http://image.tmdb.org/t/p/w200/${$image}"></img><br>`);
-                console.log($image);
+                console.log($movieID);
             }
         })
     }
