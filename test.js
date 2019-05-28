@@ -1,7 +1,10 @@
 $(function(){
 
     var superheroUrl = "https://akabab.github.io/superhero-api/api/all.json";
-    var movieUrl = "https://api.themoviedb.org/3/movie/550?api_key=d0fa4897188fdcc700abf1c8e58ff015";
+    var movieUrl = "https://api.themoviedb.org/3/search/movie?api_key=d0fa4897188fdcc700abf1c8e58ff015&language=en-US&query=";
+    var movieUrlSearch = "&page=1&include_adult=false";
+    var apiKey = "d0fa4897188fdcc700abf1c8e58ff015";
+    var $movieImageUrl = "http://image.tmdb.org/t/p/w200/";
 
     //SEARCH BUTTON
     let $search = $('#search-button').click(()=>{
@@ -17,6 +20,7 @@ $(function(){
                 }
             }
         })
+        $grabMovies($heroInput);
     })
 
     //TEMPLATE FOR DISPLAY
@@ -37,18 +41,18 @@ $(function(){
             $template($image, $name, $strength);
         })
     }
-
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://api.themoviedb.org/3/search/keyword?page=1&api_key=d0fa4897188fdcc700abf1c8e58ff015",
-        "method": "GET",
-        "headers": {},
-        "data": "{}"
-      }
       
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
+    //GRABS MOVIE RESULT BASED ON USER INPUT
+    let $grabMovies = function(hero){
+        let $displayImg = $('#images');
+        $.get(movieUrl + hero + movieUrlSearch).done((result)=>{
+            for(let i = 0; i <= result.results.length; i++){
+                // http://image.tmdb.org/t/p/w200//j3SFJqZPeeB9g5JMU7UFLgEqj2T.jpg
+                let $image = result.results[i].poster_path;
+                $displayImg.append(`<img src="http://image.tmdb.org/t/p/w200/${$image}"></img><br>`);
+                console.log($image);
+            }
+        })
+    }
 
 })
