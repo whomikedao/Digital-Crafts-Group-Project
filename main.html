@@ -1,45 +1,121 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Avengers vs JL</title>
+    <title>Super Hero</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- CSS Link -->
-    <link rel="stylesheet" type="text/css" href="project.css">
-
-
+    <link rel="stylesheet" type="text/css" href="./project.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  
+  <!-- <style>
+    @media (max-width: 900px) {
+      .cover{
+        flex: 100%;
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 600px) {
+      .cover1 {
+    flex: 100%;
+    max-width: 100%;
+  } -->
+    </style>
   </head>
-  <body>    
-
-    <!--Comic Book-->
-    <body class="text-center">    
-      <!--Comic Book-->
-      <div class="flex-container">
-        <div class="cover container"></div>
-        <div class="page1">
-          <div class="card-deck" id='row1'>
-          </div>
-          <div class="card-deck" id='row2'>
-          </div>
-          <div class="card-deck" id='row3'>
-          </div>
+  <body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-6">
+                    <h1 class="text-primary title textShadow" style="font-size: 100px;">Heroes</h1>
+                    <input id="hero-input" type="text" placeholder="Hero">
+                    <button class="btn btn-primary" id="search-button">Search</button>
+                    <br>
+                    <br>
+                    
+                    <!-- <div id="information"></div> -->
+            </div>
+            <div class="col-6">
+                    <h1 style="color: red; font-size: 100px;" class="title textShadow">Villains</h1>
+                    <input id="villain-input" type="text" placeholder="Villain">
+                    <button class="btn btn-outline-dark" id="search-button2">Search</button>
+                    <br>
+                    <br>
+                    
+                    <!-- <div id="information2"></div> -->
+            </div>
+            <div class = "row h-100" id="info">
+              
+              <div class= "col-6 mt-5" id="information">
+              
+              </div>
+              
+              <div class= "col-6 mt-5" id="information2"></div>
+              <br>
+            </div>
         </div>
-      </div>
+    </div>
+    <!-- <div class="">
+        <div class="cover"></div>
+        <div class="cover1"></div>
+      </div> -->
+  
+<div class="container d-flex d-inline-block">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner" id="images" >
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
+<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+<ol class="carousel-indicators">
+<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+</ol>
+<div class="carousel-inner" id="images2" >
+</div>
+<a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+</div>
+</div>
+
+
+      
     <!-- Optional JavaScript -->
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
     <script src="./main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-

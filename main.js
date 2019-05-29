@@ -1,113 +1,139 @@
-$(function() {
-    let superherourl = "https://akabab.github.io/superhero-api/api/all.json"
-    let movieAPI = "d0fa4897188fdcc700abf1c8e58ff015"
-//     //example https://api.themoviedb.org/3/movie/550?api_key=d0fa4897188fdcc700abf1c8e58ff015
- 
-//     //all.json
-//     //id
-//     //powerstats
-//     //appearance
-//     //biography
-//     //connections
-//     //work
-//     //images/xs sm md lg/"slug"
-
-
-
-$.get(superherourl).done(function(response){
-    let count = 1
-    response.forEach(function(stats){
-        if (stats.id != "" && count <= 9){
-            if(stats.biography.alignment == "good"){
-                if(count <= 3){
-                    $(`#row1`).append(
-                        '<div class = "card" style="border: 2px solid green">' +
-                        '<img src = "' + stats.images.md + '" class = "card-img-top box"></img>' +
-                        '<div class = "card-body">' +
-                        '<h5 class = "card-title text-center">' + stats.name + '</h5>' +
-                        '<b> Publisher: </b> <br>' + stats.biography.publisher + '<br>'
-                    )
-                } else if (count <=6){
-                    $(`#row2`).append(
-                        '<div class = "card mt-2" style="border: 2px solid green">' +
-                        '<img src = "' + stats.images.md + '" class = "card-img-top box"></img>' +
-                        '<div class = "card-body">' +
-                        '<h5 class = "card-title text-center">' + stats.name + '</h5>' +
-                        '<b> Publisher: </b> <br>' + stats.biography.publisher + '<br>'
-                    )
+$(function(){
+    var superheroUrl = "https://akabab.github.io/superhero-api/api/all.json";
+    var movieUrl = "https://api.themoviedb.org/3/search/movie?api_key=d0fa4897188fdcc700abf1c8e58ff015&language=en-US&query=";
+    var movieUrlSearch = "&page=1&include_adult=false";
+    var apiKey = "d0fa4897188fdcc700abf1c8e58ff015";
+    var $movieImageUrl = "http://image.tmdb.org/t/p/w200/";
+    
+    //SEARCH BUTTON
+    let $search = $('#search-button').click(()=>{
+        let $clearDom = $('#information').html('');
+        let $heroInput = $('#hero-input').val();
+        let $clear = $('#hero-input').val('');
+        let $images = $('#images');
+        $.get(superheroUrl).done((result)=>{
+            for(let i = 0; i < result.length; i++){ //LOOP FOR MATCHING NAME AND IF "GOOD"
+                if(result[i].name.toLowerCase() === $heroInput.toLowerCase() && result[i].biography.alignment === 'good'){
+                    $information(result[i]);
                 } else {
-                    $(`#row3`).append(
-                        '<div class = "card mt-2" style="border: 2px solid green">' +
-                        '<img src = "' + stats.images.md + '" class = "card-img-top box"></img>' +
-                        '<div class = "card-body">' +
-                        '<h5 class = "card-title text-center">' + stats.name + '</h5>' +
-                        '<b> Publisher: </b> <br>' + stats.biography.publisher + '<br>'
-                    )
-                }
-            } else {
-                if(count <= 3){
-                    $(`#row1`).append(
-                        '<div class = "card" style="border: 2px solid red">' +
-                        '<img src = "' + stats.images.md + '" class = "card-img-top box"></img>' +
-                        '<div class = "card-body">' +
-                        '<h5 class = "card-title text-center">' + stats.name + '</h5>' +
-                        '<b> Publisher: </b> <br>' + stats.biography.publisher + '<br>'
-                    )
-                } else if (count <=6){
-                    $(`#row2`).append(
-                        '<div class = "card mt-2" style="border: 2px solid red">' +
-                        '<img src = "' + stats.images.md + '" class = "card-img-top box"></img>' +
-                        '<div class = "card-body">' +
-                        '<h5 class = "card-title text-center">' + stats.name + '</h5>' +
-                        '<b> Publisher: </b> <br>' + stats.biography.publisher + '<br>'
-                    )
-                } else {
-                    $(`#row3`).append(
-                        '<div class = "card mt-2" style="border: 2px solid red">' +
-                        '<img src = "' + stats.images.md + '" class = "card-img-top box"></img>' +
-                        '<div class = "card-body">' +
-                        '<h5 class = "card-title text-center">' + stats.name + '</h5>' +
-                        '<b> Publisher: </b> <br>' + stats.biography.publisher + '<br>'
-                    )
+                    let $displayFail = $('#information').html('not a hero');
                 }
             }
-            count += 1;
-        }
-    })
-})
-
-
-    
-    let $page1 = $('#page1');
-    let $boxes = [ $('#box1'), $('#box2'), $('#box3'), $('#box4'), $('#box5'), $('#box6'), $('#box7'), $('#box8'), $('#box9')];
-    // let $box2 = $('#box2');
-    // let $box3 = $('#box3');
-    // let $box4 = $('#box4');
-    // let $box5 = $('#box5');
-    // let $box6 = $('#box6');
-    // let $box7 = $('#box7');
-    // let $box8 = $('#box8');
-    // let $box9 = $('#box9');
-    let $cover = $('.cover');
-
-    // var getInfo = function(hero){
-    //     $.get(superherourl).done(response){
-    //         console.log(response);
-    //     }
-    // }
-
-    $(document).on("click", function(event) {
-        console.log($(event.target).closest("div"));
-        let $x = $(event.target).closest('h5').textContent;
-        $.get(superherourl).done(function(response){
-            console.log(response.name);
         })
-      });
+        $images.html('');
+        $grabMovies($heroInput);
+    })
+    // SEARCH BUTTON 2
+    let $search2 = $('#search-button2').click(()=>{
+        let $clearDom = $('#information2').html('');
+        let $villainInput = $('#villain-input').val();
+        let $clear = $('#villain-input').val('');
+        let $images2 = $('#images2');
+        $.get(superheroUrl).done((result)=>{
+            for(let i = 0; i < result.length; i++){ //LOOP FOR MATCHING NAME AND IF "GOOD"
+                if(result[i].name.toLowerCase() === $villainInput.toLowerCase() && result[i].biography.alignment === 'bad'){
+                    $information2(result[i]);
+                } else {
+                    let $displayFail = $('#information2').html('not a villain');
+                }
+            }
+        })
+        $images2.html('');
+        $grabVillainMovies($villainInput);
+    })
+    //TEMPLATE FOR DISPLAY
+    let $template = function(image, name, strength, intelligence, speed, durability, power, combat){
+        let $displayInfo = $('#information');
+        let $displayList = $('<div>');
+        $displayInfo.append($displayList).html(`<img style="height: 475px; width: 350px;" class="boxShadow" src = "${image}"></img> <br>
+        <div class="white">
+        <h1 class="title"><b>${name}</b></h1>
+        <b>Strength: </b> ${strength} <br> 
+        <b>Speed: </b> ${speed} <br>
+        <b>Durability: </b> ${durability} <br>
+        <b>Power: </b> ${power} <br>`);
+    }
+    let $template2 = function(image, name, strength, intelligence, speed, durability, power, combat){
+        let $displayInfo2 = $('#information2');
+        let $displayList = $('<div>');
+        $displayInfo2.append($displayList).html(`<img style="height: 475px; width: 350px;" class="boxShadow" src = "${image}"></img> <br>
+        <div class="white">
+        <h1 class="title"><b>${name}</b></h1>
+        <b>Strength: </b> ${strength} <br> 
+        <b>Speed: </b> ${speed} <br>
+        <b>Durability: </b> ${durability} <br>
+        <b>Power: </b> ${power} <br>`);
+    }
+    //GETTING ATTRIBUTES
+    let $information = function(obj){
+        let $name = obj.name;
+        let $strength = obj.powerstats.strength;
+        let $intelligence = obj.powerstats.intelligence;
+        let $speed = obj.powerstats.speed;
+        let $durability = obj.powerstats.speed;
+        let $power = obj.powerstats.power;
+        let $combat = obj.powerstats.combat;
+        let $image = obj.images.lg;
+        $.get(superheroUrl).done((result)=>{
+            $template($image, $name, $strength, $intelligence, $speed, $durability, $power, $combat);
+        })
+    }
+    let $information2 = function(obj){
+        let $name = obj.name;
+        let $strength = obj.powerstats.strength;
+        let $intelligence = obj.powerstats.intelligence;
+        let $speed = obj.powerstats.speed;
+        let $durability = obj.powerstats.speed;
+        let $power = obj.powerstats.power;
+        let $combat = obj.powerstats.combat;
+        let $image = obj.images.lg;
+        $.get(superheroUrl).done((result)=>{
+            $template2($image, $name, $strength, $intelligence, $speed, $durability, $power, $combat);
+        })
+    }
+    //GRABS MOVIE RESULT BASED ON USER INPUT
+    let $grabMovies = function(hero){
+        let $displayImg = $('#images');
+        $.get(movieUrl + hero + movieUrlSearch).done((result)=>{
+            for(let i = 0; i < 5; i++){
+                let $image = result.results[i].poster_path;
+                if(i == 0){
+                    $displayImg.append(
+                        `<div class="carousel-item active">
+                        <img class="d-block w-100" style="height: 600px;" src="http://image.tmdb.org/t/p/w500/${$image}"></img>`);
+                } else {
+                    $displayImg.append(
+                        `<div class="carousel-item">
+                        <img class="d-block w-100" style="height: 600px;" src="http://image.tmdb.org/t/p/w500/${$image}"></img>`);
+                }
+            }
+        })
+    }
+    //GRAB VILLAIN MOVIES
+    let $grabVillainMovies = function(villain){
+        let $displayImg2 = $('#images2');
+        $.get(movieUrl + villain + movieUrlSearch).done((result)=>{
+            for(let i = 0; i < 5; i++){
+                let $image = result.results[i].poster_path;
+                console.log($image);
+                if(i == 0){
+                    $displayImg2.append(`<div class="carousel-item active">
+                    <img class="d-block w-100" style="height: 600px;" src="http://image.tmdb.org/t/p/w500/${$image}"></img>`);
+                } else {
+                    $displayImg2.append(
+                        `<div class="carousel-item">
+                        <img class="d-block w-100" style="height: 600px;" src="http://image.tmdb.org/t/p/w500/${$image}"></img>`);
+                }
+            }
+        })
 
-//     function classAtr(){
-//         $page1.attr({class: 'page1'});
-//     }
-//    $cover.on('mouseover', setTimeout(classAtr, 4000));
-
-    
- })
+    }
+})
+// var carouselExampleIndicators = document.querySelectorAll("#carouselExampleIndicators #carousel-indicators")
+// var currentPic = 0;
+// var slideInterval = setInterval(nextSlide, 2000);
+// function nextSlide(){
+//     carouselExampleIndicators[currentPic].className = "carousel-indicators";
+//     currentPic = (currentPic + 1) % carouselExampleIndicators.length;
+//     carouselExampleIndicators[currentPic].className = "active";
+// }
